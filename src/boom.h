@@ -13,4 +13,11 @@ void double_free() {
 	std::free(b);
 }
 
+void invalid_pointer() {
+	int* b = new int[2];
+
+	delete b;
+	delete[] &b[1];
+}
+
 };
