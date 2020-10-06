@@ -20,4 +20,23 @@ void invalid_pointer() {
 	delete[] &b[1];
 }
 
+void double_free_out() {
+	class PleaseDont {
+	public:
+
+		int whatever;
+
+		PleaseDont() {
+			delete this;
+
+			whatever = 0;
+		}
+
+		~PleaseDont() {}
+		
+	};
+
+	PleaseDont pd;
+}
+
 };
